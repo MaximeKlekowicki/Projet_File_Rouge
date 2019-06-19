@@ -8,14 +8,16 @@ namespace Projet_File_Rouge.Menus
     {
         private static int index = 0;
 
-        List<string> menuItems = new List<string>() {
+        List<string> menuItems = new List<string>()
+            {
                 "Nouvelle Partie",
                 "Charger Partie",
                 "Exit"
             };
+
         public MenuPrincipal(){ }
 
-        public void drawMenu()
+        public string drawMenu()
         {
             Console.CursorVisible = false;
 
@@ -41,7 +43,7 @@ namespace Projet_File_Rouge.Menus
             {
                 if (index == menuItems.Count - 1)
                 {
-                    //index = 0; //Remove the comment to return to the topmost item in the list
+                    index = 0; //Remove the comment to return to the topmost item in the list
                 }
                 else { index++; }
             }
@@ -49,7 +51,7 @@ namespace Projet_File_Rouge.Menus
             {
                 if (index <= 0)
                 {
-                    //index = menuItem.Count - 1; //Remove the comment to return to the item in the bottom of the list
+                    index = menuItems.Count - 1; //Remove the comment to return to the item in the bottom of the list
                 }
                 else { index--; }
             }
@@ -58,16 +60,13 @@ namespace Projet_File_Rouge.Menus
                 switch (menuItems[index])
                 {
                     case "Nouvelle Partie":
-                        Console.Clear();
-                        Console.WriteLine("Test"); Console.Read();
-                        break;
+                        return "Demarrage nouvelle partie";
 
                     case "Charger Partie":
-                        Console.Clear();
-                        Console.WriteLine("Test"); Console.Read();
-                        break;
+                        return "List des sauvegarde";
+
                     case "Exit":
-                        Environment.Exit(1);
+                        //Environment.Exit(0);
                     break;
 
                     default:
@@ -76,6 +75,7 @@ namespace Projet_File_Rouge.Menus
             }
 
             Console.Clear();
+            return "";
         }
     }
     

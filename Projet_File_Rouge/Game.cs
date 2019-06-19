@@ -2,6 +2,8 @@
 using Projet_File_Rouge.Classe;
 using System.IO;
 using Projet_File_Rouge.Menus;
+using System.Collections.Generic;
+
 namespace Projet_File_Rouge
 {
     class Game
@@ -9,12 +11,13 @@ namespace Projet_File_Rouge
         static void Main(string[] args)
         {
             MenuPrincipal menu = new MenuPrincipal();
-            menu.drawMenu();
-            Map map = new Map();
-            Personnage pero = new Personnage("perso", 10, 10, 10, 10, map);
-            map.DessinerMap();
-            pero.deplacementPersonnage();
-            Console.ReadKey(true);
+
+            //Map map = new Map();
+            //Personnage pero = new Personnage("perso", 10, 10, 10, 10, map);
+            //map.DessinerMap();
+            //pero.deplacementPersonnage();
+            //Console.ReadKey(true);
         }
+
     }
 }
