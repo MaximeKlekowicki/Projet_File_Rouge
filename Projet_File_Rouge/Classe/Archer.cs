@@ -7,13 +7,10 @@ namespace Projet_File_Rouge.Classe
     class Archer: Classe
     {
         public Archer(string nom, int aTK, int dEF, int vIT, int hP, Map map)
-                : base(nom, aTK, dEF, vIT, hP, 15, STAT.VIT, map)
+                : base( aTK, dEF, vIT, hP, 15, STAT.VIT)
         {
         }
 
-        public override Personnage Attaque(Personnage perso)
-        {
-            return base.Attaque(perso, "tire une fleche de PD");
-        }
+       
     }
 }

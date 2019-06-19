@@ -16,44 +16,7 @@ namespace Projet_File_Rouge
     public class Personnage
     {
         public string Nom;
-        private int _atk;
-
-        public int ATK
-        {
-            get { return _atk + GetBonus(STAT.ATK); }
-            private set { _atk = value; }
-        }
-
-        private int _def;
-
-        public int DEF
-        {
-            get { return _def + GetBonus(STAT.DEF); }
-            private set { _def = value; }
-        }
-
-        private int _vit;
-
-        public int VIT
-        {
-            get { return _vit + GetBonus(STAT.VIT); }
-            private set { _vit = value; }
-        }
-
-        private int _hp;
-
-        public int HP
-        {
-            get { return _hp + GetBonus(STAT.PV); }
-            set
-            {
-                if (value < 0)
-                {
-                    throw new Exception("Points de vie < 0");
-                }
-                _hp = value;
-            }
-        }
+       
 
         private int _PosX;
 
@@ -82,19 +45,14 @@ namespace Projet_File_Rouge
 
         private List<Item> _equipement;
 
-        public Personnage(string nom, int aTK, int dEF, int vIT, int hP, Map map)
+        public Personnage(string nom, Map map)
         {
             Nom = nom;
-            ATK = aTK;
-            DEF = dEF;
-            VIT = vIT;
-            HP = hP;
             _map = map;
             PosX = 10;
             PosY = 10;
 
             _equipement = new List<Item>();
-            map.DrawChar(this);
         }
 
         public void AjouterEquipement(Item item)
@@ -121,16 +79,6 @@ namespace Projet_File_Rouge
             return bonus;
         }
 
-        public override string ToString()
-        {
-            string txt = Nom + " atk: " + ATK + " def: " + DEF + " vit: " + VIT + " hp: " + VIT + "\r\n";
-            foreach (Item item in _equipement)
-            {
-                txt += item + "\r\n";
-            }
-            return txt;
-        }
-
          public void deplacementPersonnage(ConsoleKey key)
          {
             Map.DrawChar(this);             
@@ -155,6 +103,7 @@ namespace Projet_File_Rouge
                     break;
             }
             Map.DrawChar(this);
-        }   
+        }
+   
     }
 }
