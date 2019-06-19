@@ -3,6 +3,7 @@ using Projet_File_Rouge.Classe;
 using System.IO;
 using Projet_File_Rouge.Menus;
 using System.Collections.Generic;
+using System.Threading;
 
 namespace Projet_File_Rouge
 {
@@ -49,6 +50,7 @@ namespace Projet_File_Rouge
                             default:
                                 break;
                         }
+                        Thread.Sleep(10);
                     } while (key != ConsoleKey.Escape);
                 }
             }

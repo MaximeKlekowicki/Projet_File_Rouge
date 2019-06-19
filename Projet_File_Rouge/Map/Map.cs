@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
+using System.Threading;
 
 namespace Projet_File_Rouge
 {
@@ -34,15 +35,19 @@ namespace Projet_File_Rouge
 
         public void DessinerMap(Personnage perso)
         {
+            string s ="";
+
             for (int i = 0; i < Maps.Count; i++)
             {
                 for (int j = 0; j < Maps[i].Length; j++)
                 {
-                    Console.Write(Maps[i][j]);
+                    s += (Maps[i][j]);
                 }
-                Console.Write('\n');
+                s += '\n';
             }
+            Console.Write(s + '\n');
             DrawChar(perso);
+            
         }
 
         public void DrawChar(Personnage perso)
