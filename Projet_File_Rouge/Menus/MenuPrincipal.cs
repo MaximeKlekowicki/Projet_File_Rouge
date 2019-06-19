@@ -15,7 +15,7 @@ namespace Projet_File_Rouge.Menus
             };
         public MenuPrincipal(){ }
 
-        public void drawMenu()
+        public void DrawMenu()
         {
             Console.CursorVisible = false;
 

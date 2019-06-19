@@ -7,7 +7,7 @@ namespace Projet_File_Rouge
 {
     public class Map
     {
-        MyFile file;
+        MyFile File;
         public static List<string> Maps;
 
         public int Length { get { return Maps.Count; } set { } }
@@ -25,8 +25,8 @@ namespace Projet_File_Rouge
         public Map ()
         {
             Maps = new List<string>();
-            file = new MyFile("map.txt");
-            foreach (string line in file)
+            File = new MyFile("map.txt");
+            foreach (string line in File)
             {
                 Maps.Add(line);
             }

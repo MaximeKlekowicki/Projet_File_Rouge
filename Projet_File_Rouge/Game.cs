@@ -13,7 +13,7 @@ namespace Projet_File_Rouge
             Map map = new Map();
             Personnage pero = new Personnage("perso", 10, 10, 10, 10, map);
             map.DessinerMap();
-            pero.deplacementPersonnage();
+            pero.DeplacementPersonnage();
             Console.ReadKey(true);
         }
     }
