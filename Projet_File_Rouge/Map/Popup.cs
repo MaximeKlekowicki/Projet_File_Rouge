@@ -15,31 +15,46 @@ namespace Projet_File_Rouge
 
         public void Show()
         {
-            for (int i = 0; i < 6; i++)
+            string txt = "";
+            Console.SetCursorPosition(10, 10);
+            for (int i = 0; i < 5; i++)
             {
-                if (i == 0 || i == 5)
+                if (i == 0 || i == 4)
+                {
+                    txt += "  ";
                     for (int j = 0; j < Message.Length + 4; j++)
                     {
-                        Console.Write('*');
+                        txt += '*';
                     }
+                    txt += "  ";
+                }
+                else if (i == 2)
+                {
+                    txt += '*';
+                    for (int j = 0; j < 3; j++)
+                    {
+                        txt += ' ';
+                    }
+                    txt += Message;
+                    for (int j = 0; j < 3; j++)
+                    {
+                        txt += ' ';
+                    }
+                    txt += '*';
+                }
                 else
                 {
-                    Console.Write('*');
-                    for (int j = 0; j < 3; j++)
+                    txt += '*';
+                    for (int j = 0; j < Message.Length + 6; j++)
                     {
-                        Console.Write(' ');
+                        txt += ' ';
                     }
-                    for (int j = 0; j < Message.Length; j++)
-                    {
-                        Console.Write(Message[j]);
-                    }
-                    for (int j = 0; j < 3; j++)
-                    {
-                        Console.Write(' ');
-                    }
-                    Console.Write('*');
+                    txt += '*';
                 }
+                txt += '\n';
             }
+            Console.Clear();
+            Console.Write(txt);
         }
     }
 }
