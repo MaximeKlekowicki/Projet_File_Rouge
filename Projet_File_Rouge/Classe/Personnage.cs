@@ -143,23 +143,23 @@ namespace Projet_File_Rouge
                  if (Console.KeyAvailable)
                  {
                      key = Console.ReadKey(true).Key;
-                     Console.Write(LastCharMap); 
+                     Console.Write(LastCharMap);
                      switch (key) 
                      {
                          case ConsoleKey.UpArrow:
-                             if (PosY > 0 && map[PosX, PosY + 1] != '#')
+                             if (PosY > 0 && map[PosX, PosY - 1] == '.')
                                  PosY--;
                              break;
                          case ConsoleKey.DownArrow:
-                             if (PosY < Console.WindowHeight - 1 && map[PosX , PosY - 1] != '#') 
+                             if (PosY < Console.WindowHeight - 1 && PosY < 19 && map[PosX , PosY + 1] == '.') 
                                  PosY++;
                              break;
                          case ConsoleKey.LeftArrow: 
-                             if (PosX > 0 && map[PosX - 1, PosY] != '#')
+                             if (PosX > 0 && map[PosX - 1, PosY] == '.')
                                  PosX--;
                              break;
                          case ConsoleKey.RightArrow: 
-                             if (PosX < Console.WindowWidth - 1 && map[PosX + 1, PosY] !='#')
+                             if (PosX < Console.WindowWidth - 1 && map[PosX + 1, PosY] == '.')
                                  PosX++;
                              break;
                      }
@@ -172,10 +172,9 @@ namespace Projet_File_Rouge
         public void drawChar()
         {
             Console.SetCursorPosition(PosX, PosY);
-            if ((PosY < map.Length) && (PosX < map.Length))
-                LastCharMap = map[PosY, PosX]; 
-            else
-                LastCharMap = map[PosY, PosX]; 
+          
+            LastCharMap = map[PosX, PosY]; 
+     
             Console.Write("@"); 
             Console.SetCursorPosition(PosX, PosY); 
         }

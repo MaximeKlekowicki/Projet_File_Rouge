@@ -8,8 +8,7 @@ namespace Projet_File_Rouge
     {
         static void Main(string[] args)
         {
-            MenuPrincipale menu = new MenuPrincipale();
-            menu.CentrerEncadrerTitre("test",'c');
+            MenuPrincipal menu = new MenuPrincipal();
             Map map = new Map();
             Personnage pero = new Personnage("perso", 10, 10, 10, 10, map);
             map.DessinerMap();

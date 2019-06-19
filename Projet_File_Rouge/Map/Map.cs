@@ -7,19 +7,16 @@ namespace Projet_File_Rouge
 {
     public class Map
     {
-        StreamReader sr = new StreamReader("map.txt");
-        MyFile file = new MyFile("map.txt");
-        int nbLigne = 20;
-        public static string[] Maps = new string [20];
+        MyFile file;
+        public static List<string> Maps;
 
-        public int Length { get { return Maps.Length; } set { } }
-
+        public int Length { get { return Maps.Count; } set { } }
 
         public char this [int i, int j]
         {
             get
             {
-                return Maps[i][j];
+                return Maps[j][i];
             }
 
             set { }
@@ -27,17 +24,23 @@ namespace Projet_File_Rouge
 
         public Map ()
         {
-            for(int i = 0; i<nbLigne; i++)
+            Maps = new List<string>();
+            file = new MyFile("map.txt");
+            foreach (string line in file)
             {
-                Maps[i] = file[i];
+                Maps.Add(line);
             }
         }
 
         public void DessinerMap()
         {
-            for (int i = 0; i < nbLigne; i++)
+            for (int i = 0; i < Maps.Count; i++)
             {
-               Console.WriteLine(file[i]);
+                for (int j = 0; j < Maps[i].Length; j++)
+                {
+                    Console.Write(Maps[i][j]);
+                }
+                Console.Write('\n');
             }
         }
     }
