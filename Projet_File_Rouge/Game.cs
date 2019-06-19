@@ -14,6 +14,7 @@ namespace Projet_File_Rouge
             MenuPrincipal menuPrincipal = new MenuPrincipal();
 
             Map map = new Map();
+<<<<<<< HEAD
             Personnage perso = new Personnage("perso", map);
 
             ConsoleKey key;

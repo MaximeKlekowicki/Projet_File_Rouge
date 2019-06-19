@@ -104,6 +104,41 @@ namespace Projet_File_Rouge
             }
             Map.DrawChar(this);
         }
-   
+
+         public void DeplacementPersonnage()
+         {
+             Map.DrawChar(this);
+
+             ConsoleKey key = ConsoleKey.Enter; // Valeur initiale
+             do
+             {
+                 if (Console.KeyAvailable)
+                 {
+                     key = Console.ReadKey(true).Key;
+                    Map.EraseChar(PosX, PosY);
+                     switch (key) 
+                     {
+                         case ConsoleKey.UpArrow:
+                             if (PosY > 0 && Map[PosX, PosY - 1] == ' ')
+                                 PosY--;
+                             break;
+                         case ConsoleKey.DownArrow:
+                             if (PosY < Console.WindowHeight - 1 && PosY < 19 && Map[PosX , PosY + 1] == ' ') 
+                                 PosY++;
+                             break;
+                         case ConsoleKey.LeftArrow: 
+                             if (PosX > 0 && Map[PosX - 1, PosY] == ' ')
+                                 PosX--;
+                             break;
+                         case ConsoleKey.RightArrow: 
+                             if (PosX < Console.WindowWidth - 1 && Map[PosX + 1, PosY] == ' ')
+                                 PosX++;
+                             break;
+                     }
+
+                     Map.DrawChar(this); 
+                 }
+             } while (key != ConsoleKey.Escape); 
+         }   
     }
 }
