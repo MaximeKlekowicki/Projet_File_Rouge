@@ -16,7 +16,7 @@ namespace Projet_File_Rouge.Classe
             _carac = carac;
         }
 
-        protected override int GetBonus(STAT stat)
+        public override int GetBonus(STAT stat)
         {
             int bonus = 0;
             if (_carac == stat)

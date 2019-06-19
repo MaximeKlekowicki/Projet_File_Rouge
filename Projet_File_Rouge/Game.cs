@@ -9,6 +9,7 @@ namespace Projet_File_Rouge
         static void Main(string[] args)
         {
             MenuPrincipal menu = new MenuPrincipal();
+            menu.drawMenu();
             Map map = new Map();
             Personnage pero = new Personnage("perso", 10, 10, 10, 10, map);
             map.DessinerMap();

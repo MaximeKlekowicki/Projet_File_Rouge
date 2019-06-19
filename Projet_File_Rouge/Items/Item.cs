@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Projet_File_Rouge.Items
 {
-    class Item
+    public class Item
     {
         private int _bonus;
 
