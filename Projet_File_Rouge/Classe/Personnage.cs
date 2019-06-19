@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Projet_File_Rouge
 {
-    enum STAT
+    public enum STAT
     {
         ATK,
         DEF,
@@ -13,13 +13,10 @@ namespace Projet_File_Rouge
         PV
     }
 
-    class Personnage
+    public class Personnage
     {
         public string Nom;
         private int _atk;
-        private static char LastCharMap;
-        private int NewX, NewY;
-        private int PrevX, PrevY;
 
         public int ATK
         {
@@ -109,7 +106,7 @@ namespace Projet_File_Rouge
             _equipement.Remove(item);
         }
 
-        protected virtual int GetBonus(STAT nomCarac)
+        public virtual int GetBonus(STAT nomCarac)
         {
             int bonus = 0;
             foreach (Item item in _equipement)
@@ -135,7 +132,7 @@ namespace Projet_File_Rouge
 
          public void deplacementPersonnage()
          {
-             drawChar();
+             map.DrawChar(this);
 
              ConsoleKey key = ConsoleKey.Enter; // Valeur initiale
              do
@@ -143,7 +140,7 @@ namespace Projet_File_Rouge
                  if (Console.KeyAvailable)
                  {
                      key = Console.ReadKey(true).Key;
-                     Console.Write(LastCharMap);
+                    map.EraseChar(PosX, PosY);
                      switch (key) 
                      {
                          case ConsoleKey.UpArrow:
@@ -164,19 +161,11 @@ namespace Projet_File_Rouge
                              break;
                      }
 
-                     drawChar(); 
+                     map.DrawChar(this); 
                  }
              } while (key != ConsoleKey.Escape); 
          }
 
-        public void drawChar()
-        {
-            Console.SetCursorPosition(PosX, PosY);
-          
-            LastCharMap = map[PosX, PosY]; 
-     
-            Console.Write("@"); 
-            Console.SetCursorPosition(PosX, PosY); 
-        }
+        
     }
 }

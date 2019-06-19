@@ -43,5 +43,17 @@ namespace Projet_File_Rouge
                 Console.Write('\n');
             }
         }
+
+        public void DrawChar(Personnage perso)
+        {
+            Console.SetCursorPosition(perso.PosX, perso.PosY);
+            Console.Write("@");
+        }
+
+        public void EraseChar(int x, int y)
+        {
+            Console.SetCursorPosition(x, y);
+            Console.Write(' ');
+        }
     }
 }
