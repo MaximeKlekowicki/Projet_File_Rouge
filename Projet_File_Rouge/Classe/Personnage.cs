@@ -1,18 +1,11 @@
-﻿using Projet_File_Rouge.Items;
+﻿using Projet_File_Rouge.Classe;
+using Projet_File_Rouge.Items;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace Projet_File_Rouge
 {
-    public enum STAT
-    {
-        ATK,
-        DEF,
-        VIT,
-        PV
-    }
-
     public class Personnage
     {
         public string Nom;
@@ -79,7 +72,7 @@ namespace Projet_File_Rouge
             return bonus;
         }
 
-         public void deplacementPersonnage(ConsoleKey key)
+         public void DeplacementPersonnage(ConsoleKey key)
          {
             Map.DrawChar(this);             
             Map.EraseChar(PosX, PosY);

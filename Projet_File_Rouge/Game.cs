@@ -5,6 +5,7 @@ using Projet_File_Rouge.Menus;
 using System.Collections.Generic;
 using System.Threading;
 using Projet_File_Rouge.Items;
+using Projet_File_Rouge.Factories;
 
 namespace Projet_File_Rouge
 {
@@ -16,6 +17,9 @@ namespace Projet_File_Rouge
             MenuPrincipal menuPrincipal = new MenuPrincipal();
             MenuCombat menuCombat = new MenuCombat();
 
+            //Inisiatlisation des factory
+            EnnemiFactory ennemiFactory = new EnnemiFactory();
+
             //Iniatialisation de la map
             Map map = new Map();
 
@@ -24,36 +28,22 @@ namespace Projet_File_Rouge
             List<Item> itemGarrosh = new List<Item>();
             List<Item> itemRexxar = new List<Item>();
 
-            //Initialisation des items des ennemie
-            List<Item> itemOrc = new List<Item>();
-            List<Item> itemGobelin = new List<Item>();
-            List<Item> itemGeant = new List<Item>();
-
             //Initialisation des personnage jouable
             Personnage perso = new Personnage("perso", map);
             Mage jeanna = new Mage("Jeanna", itemJeanna);
             Guerrier garrosh = new Guerrier("Garrosh", itemGarrosh);
             Archer rexxar = new Archer("Rexxar", itemRexxar);
 
-            //Initialisation des Ennemies
-            Orc orc = new Orc("Orc", itemOrc);
-            Gobelin gobelin = new Gobelin("Gobelin", itemGobelin);
-            Geant geant = new Geant("Geant", itemGeant);
+            //List des ennemies
+            List<Orc> listOrc = new List<Orc>();
+            List<Gobelin> listGobelin = new List<Gobelin>();
+            List<Geant> listGeant = new List<Geant>();
 
-            //Initilisation des differents items
-            //Arme
-            Item hacheADeuxMains = new Item(20, STAT.ATK);
-            Item eppeEnBois = new Item(5, STAT.ATK);
-            Item batonDePirmancien = new Item(30, STAT.ATK);
-            Item arcDeChasseur = new Item(25, STAT.ATK);
-
-            //Armure
-            Item armureDeCuire = new Item(60, STAT.VIT);
-            Item armurDePlate = new Item(50, STAT.DEF);
-            Item robeDeSorcier = new Item(40, STAT.ATK);
-            Item bottesLegere = new Item(30, STAT.VIT);
-
-            
+            for(int i = 0; i< 20; i++)
+            {
+                listOrc.Add((Orc)ennemiFactory.CreationEnnemi(2));
+            }
+             
             ConsoleKey key;
 
 
@@ -78,7 +68,7 @@ namespace Projet_File_Rouge
             {
                 Console.Clear();
                 Console.CursorVisible = false;
-                string selectedMenuItem = menuPrincipal.drawMenu(menuPrincipalItems);
+                string selectedMenuItem = menuPrincipal.DrawMenu(menuPrincipalItems);
                 if (selectedMenuItem == "Nouvelle Partie")
                 {
 
@@ -93,16 +83,25 @@ namespace Projet_File_Rouge
                             case ConsoleKey.DownArrow:
                             case ConsoleKey.LeftArrow:
                             case ConsoleKey.RightArrow:
-                                perso.deplacementPersonnage(key);
+                                perso.DeplacementPersonnage(key);
                                 if (map[perso.PosX, perso.PosY] == 'M')
                                 {
-                                    Console.Clear();
-                                    string selectedMenuCombatItem = menuCombat.drawMenu(menuCombatItem);
-                                    if(selectedMenuCombatItem == "Attaquer")
+                                    string selectedMenuCombatItem;
+                                    do
                                     {
-                                        jeanna.Attaquer(orc);
-                                        Thread.Sleep(5000);
-                                    }
+                                        Console.Clear();
+                                        selectedMenuCombatItem = menuCombat.DrawMenu(menuCombatItem);
+                                        if (selectedMenuCombatItem == "Attaquer")
+                                        {
+                                            foreach (Orc orc in listOrc)
+                                            {
+                                                jeanna.Attaquer(orc);
+                                                orc.Attaquer(jeanna);
+                                                Thread.Sleep(5000);
+                                            }
+                                        }
+                                    } while (selectedMenuCombatItem != "Fuir");
+                                    
                                 }
                                     break;
                             default:

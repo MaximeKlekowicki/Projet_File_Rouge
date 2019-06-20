@@ -13,7 +13,7 @@ namespace Projet_File_Rouge.Menus
 
         public MenuPrincipal(){ }
 
-        public string drawMenu(List<string> menuItems)
+        public string DrawMenu(List<string> menuItems)
         {
             Console.CursorVisible = false;
 

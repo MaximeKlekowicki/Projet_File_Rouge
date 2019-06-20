@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Projet_File_Rouge.Classe
 {
-    class Guerrier: Classe
+    class Guerrier: ClassePersonnage
     {
         public Guerrier(string nom, List<Item> equipement): base(nom, equipement)
         {
@@ -15,6 +15,12 @@ namespace Projet_File_Rouge.Classe
             this.HP += 70;
         }
 
-       
+        public override ClassePersonnage Attaquer(ClassePersonnage perso)
+        {
+            Console.WriteLine(_nom + "Donne un gros coup");
+            perso.HP -= (ATK - perso.DEF);
+            Console.WriteLine("Il inflige " + ATK + " dégats à " + perso._nom);
+            return perso;
+        }
     }
 }

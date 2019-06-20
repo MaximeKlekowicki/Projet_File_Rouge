@@ -9,7 +9,7 @@ namespace Projet_File_Rouge.Menus
         private static int index;
 
         public MenuCombat() { }
-        public string drawMenu(List<string> menuItems)
+        public string DrawMenu(List<string> menuItems)
         {
             Console.CursorVisible = false;
 
