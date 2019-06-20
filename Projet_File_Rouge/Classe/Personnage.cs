@@ -86,19 +86,19 @@ namespace Projet_File_Rouge
             switch (key) 
             {
                 case ConsoleKey.UpArrow:
-                    if (PosY > 0 && Map[PosX, PosY - 1] == ' ')
+                    if (PosY > 0 && Map[PosX, PosY - 1] == ' ' || Map[PosX, PosY - 1] == 'M')
                         PosY--;
                     break;
                 case ConsoleKey.DownArrow:
-                    if (PosY < Console.WindowHeight - 1 && PosY < 19 && Map[PosX , PosY + 1] == ' ') 
+                    if (PosY < Console.WindowHeight - 1 && PosY < 19 && Map[PosX , PosY + 1] == ' ' || Map[PosX, PosY + 1] == 'M') 
                         PosY++;
                     break;
                 case ConsoleKey.LeftArrow: 
-                    if (PosX > 0 && Map[PosX - 1, PosY] == ' ')
+                    if (PosX > 0 && Map[PosX - 1, PosY] == ' ' || Map[PosX - 1, PosY] == 'M')
                         PosX--;
                     break;
                 case ConsoleKey.RightArrow: 
-                    if (PosX < Console.WindowWidth - 1 && Map[PosX + 1, PosY] == ' ')
+                    if (PosX < Console.WindowWidth - 1 && Map[PosX + 1, PosY] == ' ' || Map[PosX + 1, PosY] == 'M')
                         PosX++;
                     break;
             }

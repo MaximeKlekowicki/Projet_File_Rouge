@@ -5,16 +5,14 @@ using System.Text;
 
 namespace Projet_File_Rouge.Classe
 {
-    class Archer: Classe
+    class Gobelin:Classe
     {
-        public Archer( string nom, List<Item> equipement) : base(nom, equipement)
+        public Gobelin(string nom, List<Item> equipement) : base(nom, equipement)
         {
-            this.ATK += 40;
+            this.ATK += 30;
             this.DEF += 30;
-            this.VIT += 70;
-            this.HP += 30;
+            this.VIT -= 10;
+            this.HP += 50;
         }
-
-       
     }
 }
