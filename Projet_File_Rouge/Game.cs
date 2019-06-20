@@ -13,13 +13,10 @@ namespace Projet_File_Rouge
         {
 
             MenuPrincipal menuPrincipal = new MenuPrincipal();
-
             Map map = new Map();
             Personnage perso = new Personnage("perso", map);
 
             ConsoleKey key;
-
-
 
             List<string> menuItems = new List<string>()
             {
