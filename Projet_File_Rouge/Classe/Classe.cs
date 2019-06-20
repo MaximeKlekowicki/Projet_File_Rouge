@@ -4,19 +4,60 @@ using System.Text;
 
 namespace Projet_File_Rouge.Classe
 {
-     abstract class Classe: Personnage
-    {
+     abstract class Classe
+     {
         private int _bonus;
         private STAT _carac;
 
-        public Classe(string nom, int aTK, int dEF, int vIT, int hP, int bonus, STAT carac, Map map) :
-            base(nom, aTK, dEF, vIT, hP, map)
+        private int _atk;
+
+        public int ATK
         {
+            get { return _atk + GetBonus(STAT.ATK); }
+            private set { _atk = value; }
+        }
+
+        private int _def;
+
+        public int DEF
+        {
+            get { return _def + GetBonus(STAT.DEF); }
+            private set { _def = value; }
+        }
+
+        private int _vit;
+
+        public int VIT
+        {
+            get { return _vit + GetBonus(STAT.VIT); }
+            private set { _vit = value; }
+        }
+
+        private int _hp;
+
+        public int HP
+        {
+            get { return _hp + GetBonus(STAT.PV); }
+            set
+            {
+                if (value < 0)
+                {
+                    throw new Exception("Points de vie < 0");
+                }
+                _hp = value;
+            }
+        }
+        public Classe( int aTK, int dEF, int vIT, int hP, int bonus, STAT carac)
+        {
+            ATK = aTK;
+            DEF = dEF;
+            VIT = vIT;
+            HP = hP;
             _bonus = bonus;
             _carac = carac;
         }
 
-        public override int GetBonus(STAT stat)
+        public int GetBonus(STAT stat)
         {
             int bonus = 0;
             if (_carac == stat)
@@ -24,25 +65,7 @@ namespace Projet_File_Rouge.Classe
                 bonus = _bonus;
             }
 
-            return (bonus + base.GetBonus(stat));
+            return (bonus + GetBonus(stat));
         }
-
-        protected Personnage Attaque(Personnage perso, string textAtk)
-        {
-            int degas = (ATK - perso.DEF);
-            if (degas < 0)
-            {
-                degas = 0;
-            }
-            Console.WriteLine(Nom + " " + textAtk);
-            Console.WriteLine("Il inflige " + degas + " sur " + perso.Nom);
-            perso.HP -= degas;
-            return perso;
-        }
-
-        public virtual Personnage Attaque(Personnage perso)
-        {
-            return Attaque(perso, "attaque");
-        }
-    }
+     }
 }
