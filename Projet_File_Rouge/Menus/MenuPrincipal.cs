@@ -7,6 +7,9 @@ namespace Projet_File_Rouge.Menus
     public class MenuPrincipal
     {
         private static int index = 0;
+        MyFile file = new MyFile("banner.txt");
+        public static List<string> banner_menu = new List<string>();
+
 
         public MenuPrincipal(){ }
 
@@ -16,8 +19,10 @@ namespace Projet_File_Rouge.Menus
 
             for (int i = 0; i < menuItems.Count; i++)
             {
+
                 if (i == index)
                 {
+
                     Console.BackgroundColor = ConsoleColor.Gray;
                     Console.ForegroundColor = ConsoleColor.Black;
 
@@ -69,6 +74,34 @@ namespace Projet_File_Rouge.Menus
 
             Console.Clear();
             return "";
+        }
+
+        private static void CentrerLeTexte(string texte)
+        {
+	        int nbEspaces = (Console.WindowWidth - texte.Length) / 2;
+
+	        Console.SetCursorPosition(nbEspaces, nbEspaces);
+        }
+
+        public void DessinerBanner()
+        {
+            string s = "";
+
+            foreach (string ligne in file)
+            {
+                banner_menu.Add(ligne);
+            }
+
+            for (int i = 0; i < banner_menu.Count; i++)
+            {
+                for (int j = 0; j < banner_menu[i].Length; j++)
+                {
+                    s += (banner_menu[i][j]);
+                }
+                s += '\n';
+            }
+            Console.Write(s + '\n');
+
         }
     }
     

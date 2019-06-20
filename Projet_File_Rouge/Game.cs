@@ -11,6 +11,7 @@ namespace Projet_File_Rouge
     {
         static void Main(string[] args)
         {
+
             MenuPrincipal menuPrincipal = new MenuPrincipal();
 
             Map map = new Map();
@@ -27,6 +28,7 @@ namespace Projet_File_Rouge
                 "Exit"
             };
 
+
             while (true)
             {
                 Console.Clear();
@@ -34,6 +36,7 @@ namespace Projet_File_Rouge
                 string selectedMenuItem = menuPrincipal.drawMenu(menuItems);
                 if (selectedMenuItem == "Nouvelle Partie")
                 {
+
                     do
                     {
                         Console.Clear();
