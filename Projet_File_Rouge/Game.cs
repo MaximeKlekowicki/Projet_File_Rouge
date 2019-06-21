@@ -16,6 +16,7 @@ namespace Projet_File_Rouge
             //Initialisation des menus
             MenuPrincipal menuPrincipal = new MenuPrincipal();
             MenuCombat menuCombat = new MenuCombat();
+            MenuActionCombat menuActionCombat = new MenuActionCombat();
 
             //Inisiatlisation des factory
             EnnemiFactory ennemiFactory = new EnnemiFactory();
@@ -62,6 +63,13 @@ namespace Projet_File_Rouge
                 "Fuir",
             };
 
+            //Initialisaiton des differentes options du menu de combat
+            List<string> menuActionCombatItem = new List<string>()
+            {
+                "Attaque",
+                "Attaque Special",
+            };
+
 
             //Lancement du jeu
             while (true)
@@ -93,12 +101,18 @@ namespace Projet_File_Rouge
                                         selectedMenuCombatItem = menuCombat.DrawMenu(menuCombatItem);
                                         if (selectedMenuCombatItem == "Attaquer")
                                         {
-                                            foreach (Orc orc in listOrc)
+                                            do
                                             {
-                                                jeanna.Attaquer(orc);
-                                                orc.Attaquer(jeanna);
-                                                Thread.Sleep(5000);
-                                            }
+                                                Console.Clear();
+                                                string selectedActionMenuCombat = menuActionCombat.DrawMenu(menuActionCombatItem);
+
+                                                if (selectedActionMenuCombat == "Attaque")
+                                                {
+                                                    jeanna.Attaquer(listOrc[1]);
+                                                    Console.WriteLine(listOrc[1].HP);
+                                                    Thread.Sleep(2000);
+                                                }
+                                            } while (jeanna.HP > 0 || listOrc[1].HP > 0);
                                         }
                                     } while (selectedMenuCombatItem != "Fuir");
                                     
