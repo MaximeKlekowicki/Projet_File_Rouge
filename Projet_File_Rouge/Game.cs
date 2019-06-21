@@ -108,10 +108,11 @@ namespace Projet_File_Rouge
 
                                                 if (selectedActionMenuCombat == "Attaque")
                                                 {
-                                                    jeanna.Attaquer(listOrc[1]);
+                                                    jeanna.Attaque(listOrc[1]);
                                                     Console.WriteLine(listOrc[1].HP);
                                                     Thread.Sleep(2000);
                                                 }
+
                                             } while (jeanna.HP > 0 || listOrc[1].HP > 0);
                                         }
                                     } while (selectedMenuCombatItem != "Fuir");

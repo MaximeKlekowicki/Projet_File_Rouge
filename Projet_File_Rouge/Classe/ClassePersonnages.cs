@@ -20,7 +20,7 @@ namespace Projet_File_Rouge.Classe
         private readonly int _bonus;
         private readonly STAT _carac;
 
-        private int _atk;
+        private double _atk;
 
         private int _xp;
 
@@ -30,7 +30,7 @@ namespace Projet_File_Rouge.Classe
             set { _xp = value; }
         }
 
-        public int ATK
+        public double ATK
         {
             get { return _atk + GetBonus(STAT.ATK); }
             set { _atk = value; }
@@ -52,9 +52,9 @@ namespace Projet_File_Rouge.Classe
             set { _vit = value; }
         }
 
-        private int _hp;
+        private double _hp;
 
-        public int HP
+        public double HP
         {
             get { return _hp + GetBonus(STAT.PV); }
             set
@@ -103,12 +103,13 @@ namespace Projet_File_Rouge.Classe
             _equipement.Remove(item);
         }
 
-        public virtual ClassePersonnage Attaquer(ClassePersonnage perso)
-        {
-            Console.WriteLine(_nom + " inflige un gros coup");
-            perso.HP -= (ATK - perso.DEF);
-            Console.WriteLine("Il inflige " + ATK + " dégats à " + perso._nom);
-            return perso;
-        }
+        //public virtual ClassePersonnage Attaquer(ClassePersonnage perso)
+        //{
+        //    Console.WriteLine(_nom + " inflige un gros coup");
+        //    perso.HP -= (ATK - perso.DEF);
+        //    Console.WriteLine("Il inflige " + ATK + " dégats à " + perso._nom);
+        //    return perso;
+        //}
+
     }
 }
