@@ -8,6 +8,7 @@ namespace Projet_File_Rouge.Classe
 {
     class Gobelin: ClassePersonnage, IAttaque
     {
+        #region Constructeur
         public Gobelin(string nom, List<Item> equipement) : base(nom, equipement)
         {
             this.ATK += 30;
@@ -15,7 +16,9 @@ namespace Projet_File_Rouge.Classe
             this.VIT -= 10;
             this.HP += 50;
         }
+        #endregion
 
+        #region Fonction
         public ClassePersonnage Attaque(ClassePersonnage perso)
         {
             Console.WriteLine(_nom + "Donne un coup legerement enervant");
@@ -27,9 +30,11 @@ namespace Projet_File_Rouge.Classe
         public ClassePersonnage AttaqueSpecial(ClassePersonnage perso)
         {
             Console.WriteLine(_nom + "Donne un coup encore plus enervant");
-            perso.HP -= (ATK*0.2 - perso.DEF);
+            perso.HP -= (ATK * 0.2 - perso.DEF);
             Console.WriteLine("Il inflige " + ATK + " dégats à " + perso._nom);
             return perso;
         }
+        #endregion
+
     }
 }

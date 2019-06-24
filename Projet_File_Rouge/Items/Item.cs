@@ -7,7 +7,7 @@ namespace Projet_File_Rouge.Items
 {
     public class Item
     {
-
+        #region Constructeur
         private string _nom;
 
         public string Nom
@@ -43,5 +43,7 @@ namespace Projet_File_Rouge.Items
         {
             return "Nom: " + _nom + "Bonus: " + _bonus + " Nom de carac: " + _nomCarac;
         }
+        #endregion
+
     }
 }

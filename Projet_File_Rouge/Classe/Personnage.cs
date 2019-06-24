@@ -8,8 +8,9 @@ namespace Projet_File_Rouge
 {
     public class Personnage
     {
+        #region Constructeur
         public string Nom;
-       
+
 
         private int _PosX;
 
@@ -47,56 +48,37 @@ namespace Projet_File_Rouge
 
             _equipement = new List<Item>();
         }
+        #endregion
 
-        public void AjouterEquipement(Item item)
+        #region Fonctions
+        public void DeplacementPersonnage(ConsoleKey key)
         {
-            _equipement.Add(item);
-        }
-
-        public void SupprimerEquipement(Item item)
-        {
-            _equipement.Remove(item);
-        }
-
-        public virtual int GetBonus(STAT nomCarac)
-        {
-            int bonus = 0;
-            foreach (Item item in _equipement)
-            {
-                if (item.NomCarac == nomCarac)
-                {
-                    bonus += item.Bonus;
-                }
-            }
-
-            return bonus;
-        }
-
-         public void DeplacementPersonnage(ConsoleKey key)
-         {
-            Map.DrawChar(this);             
+            Map.DrawChar(this);
             Map.EraseChar(PosX, PosY);
-            switch (key) 
+            switch (key)
             {
                 case ConsoleKey.UpArrow:
                     if (PosY > 0 && Map[PosX, PosY - 1] == ' ' || Map[PosX, PosY - 1] == 'M')
                         PosY--;
                     break;
                 case ConsoleKey.DownArrow:
-                    if (PosY < Console.WindowHeight - 1 && PosY < 19 && Map[PosX , PosY + 1] == ' ' || Map[PosX, PosY + 1] == 'M') 
+                    if (PosY < Console.WindowHeight - 1 && PosY < 19 && Map[PosX, PosY + 1] == ' ' || Map[PosX, PosY + 1] == 'M')
                         PosY++;
                     break;
-                case ConsoleKey.LeftArrow: 
+                case ConsoleKey.LeftArrow:
                     if (PosX > 0 && Map[PosX - 1, PosY] == ' ' || Map[PosX - 1, PosY] == 'M')
                         PosX--;
                     break;
-                case ConsoleKey.RightArrow: 
+                case ConsoleKey.RightArrow:
                     if (PosX < Console.WindowWidth - 1 && Map[PosX + 1, PosY] == ' ' || Map[PosX + 1, PosY] == 'M')
                         PosX++;
                     break;
             }
             Map.DrawChar(this);
         }
-   
+        #endregion
+
+
+
     }
 }

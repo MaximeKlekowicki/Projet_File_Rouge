@@ -8,6 +8,7 @@ namespace Projet_File_Rouge.Classe
 {
     class Geant: ClassePersonnage, IAttaque
     {
+        #region Constructuer
         public Geant(string nom, List<Item> equipement) : base(nom, equipement)
         {
             this.ATK += 100;
@@ -15,7 +16,9 @@ namespace Projet_File_Rouge.Classe
             this.VIT -= 3;
             this.HP += 100;
         }
+        #endregion
 
+        #region Fonction
         public ClassePersonnage Attaque(ClassePersonnage perso)
         {
             Console.WriteLine(_nom + "Defonce un crane");
@@ -27,9 +30,11 @@ namespace Projet_File_Rouge.Classe
         public ClassePersonnage AttaqueSpecial(ClassePersonnage perso)
         {
             Console.WriteLine(_nom + "Defonce un crane");
-            perso.HP -= (ATK*0.5 - perso.DEF);
+            perso.HP -= (ATK * 0.5 - perso.DEF);
             Console.WriteLine("Il inflige " + ATK + " dégats à " + perso._nom);
             return perso;
         }
+        #endregion
+
     }
 }

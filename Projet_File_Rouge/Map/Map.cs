@@ -8,12 +8,13 @@ namespace Projet_File_Rouge
 {
     public class Map
     {
+        #region Constructeur
         MyFile File;
         public static List<string> Maps;
 
         public int Length { get { return Maps.Count; } set { } }
 
-        public char this [int i, int j]
+        public char this[int i, int j]
         {
             get
             {
@@ -23,7 +24,7 @@ namespace Projet_File_Rouge
             set { }
         }
 
-        public Map ()
+        public Map()
         {
             Maps = new List<string>();
             File = new MyFile("map.txt");
@@ -32,10 +33,12 @@ namespace Projet_File_Rouge
                 Maps.Add(line);
             }
         }
+        #endregion
 
+        #region Fonctions
         public void DessinerMap(Personnage perso)
         {
-            string s ="";
+            string s = "";
 
             for (int i = 0; i < Maps.Count; i++)
             {
@@ -47,7 +50,7 @@ namespace Projet_File_Rouge
             }
             Console.Write(s + '\n');
             DrawChar(perso);
-            
+
         }
 
         public void DrawChar(Personnage perso)
@@ -61,5 +64,7 @@ namespace Projet_File_Rouge
             Console.SetCursorPosition(x, y);
             Console.Write(' ');
         }
+        #endregion
+
     }
 }

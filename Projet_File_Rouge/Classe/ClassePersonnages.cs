@@ -14,12 +14,13 @@ namespace Projet_File_Rouge.Classe
         PV
     }
     public class ClassePersonnage
-     {
+    {
         public string _nom;
         public int _niveau;
         private readonly int _bonus;
         private readonly STAT _carac;
 
+        #region Constructeur
         private double _atk;
 
         private int _xp;
@@ -70,7 +71,7 @@ namespace Projet_File_Rouge.Classe
         private List<Item> _equipement;
 
         public ClassePersonnage() { }
-        public ClassePersonnage(string nom,List<Item> equipement)
+        public ClassePersonnage(string nom, List<Item> equipement)
         {
             _nom = nom;
             ATK = 10;
@@ -82,7 +83,9 @@ namespace Projet_File_Rouge.Classe
 
             _equipement = new List<Item>();
         }
+        #endregion
 
+        #region Fonctions
         public int GetBonus(STAT stat)
         {
             int bonus = 0;
@@ -102,14 +105,9 @@ namespace Projet_File_Rouge.Classe
         {
             _equipement.Remove(item);
         }
-
-        //public virtual ClassePersonnage Attaquer(ClassePersonnage perso)
-        //{
-        //    Console.WriteLine(_nom + " inflige un gros coup");
-        //    perso.HP -= (ATK - perso.DEF);
-        //    Console.WriteLine("Il inflige " + ATK + " dégats à " + perso._nom);
-        //    return perso;
-        //}
-
+        #endregion
     }
+
+
+
 }

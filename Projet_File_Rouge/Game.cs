@@ -74,17 +74,19 @@ namespace Projet_File_Rouge
             //Lancement du jeu
             while (true)
             {
+                //Affichage du menu principal
                 Console.Clear();
                 Console.CursorVisible = false;
                 string selectedMenuItem = menuPrincipal.DrawMenu(menuPrincipalItems);
                 if (selectedMenuItem == "Nouvelle Partie")
                 {
-
+                    //Affichage de la map
                     do
                     {
                         Console.Clear();
                         map.DessinerMap(perso);
                         key = Console.ReadKey().Key;
+                        //System de deplacement
                         switch (key)
                         {
                             case ConsoleKey.UpArrow:
@@ -92,6 +94,7 @@ namespace Projet_File_Rouge
                             case ConsoleKey.LeftArrow:
                             case ConsoleKey.RightArrow:
                                 perso.DeplacementPersonnage(key);
+                                //System de combat
                                 if (map[perso.PosX, perso.PosY] == 'M')
                                 {
                                     string selectedMenuCombatItem;

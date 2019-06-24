@@ -8,6 +8,9 @@ namespace Projet_File_Rouge.Classe
 {
     class Archer: ClassePersonnage, IAttaque
     {
+        #region Constructeur
+
+        //Constructeur
         public Archer( string nom, List<Item> equipement) : base(nom, equipement)
         {
             this.ATK += 40;
@@ -16,6 +19,10 @@ namespace Projet_File_Rouge.Classe
             this.HP += 30;
         }
 
+
+        #endregion
+
+        #region Fonctions
         public ClassePersonnage Attaque(ClassePersonnage perso)
         {
             Console.WriteLine(_nom + "Tire une fleche");
@@ -23,13 +30,14 @@ namespace Projet_File_Rouge.Classe
             Console.WriteLine("Il inflige " + ATK + " dégats à " + perso._nom);
             return perso;
         }
-
         public ClassePersonnage AttaqueSpecial(ClassePersonnage perso)
         {
             Console.WriteLine(_nom + "Tire une fleche");
-            perso.HP -= (ATK*0.3 - perso.DEF);
+            perso.HP -= (ATK * 0.3 - perso.DEF);
             Console.WriteLine("Il inflige " + ATK + " dégats à " + perso._nom);
             return perso;
         }
+        #endregion
+
     }
 }

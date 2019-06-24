@@ -8,14 +8,17 @@ namespace Projet_File_Rouge.Classe
 {
     class Guerrier: ClassePersonnage, IAttaque
     {
-        public Guerrier(string nom, List<Item> equipement): base(nom, equipement)
+        #region Constructeur
+        public Guerrier(string nom, List<Item> equipement) : base(nom, equipement)
         {
             this.ATK += 50;
             this.DEF += 50;
             this.VIT -= 5;
             this.HP += 70;
         }
+        #endregion
 
+        #region Fonctions
         public ClassePersonnage Attaque(ClassePersonnage perso)
         {
             Console.WriteLine(_nom + "Donne un gros coup");
@@ -27,9 +30,11 @@ namespace Projet_File_Rouge.Classe
         public ClassePersonnage AttaqueSpecial(ClassePersonnage perso)
         {
             Console.WriteLine(_nom + "Donne un gros coup");
-            perso.HP -= (ATK*0.1 - perso.DEF);
+            perso.HP -= (ATK * 0.1 - perso.DEF);
             Console.WriteLine("Il inflige " + ATK + " dégats à " + perso._nom);
             return perso;
         }
+        #endregion
+
     }
 }
