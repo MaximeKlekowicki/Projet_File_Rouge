@@ -23,6 +23,16 @@ namespace Projet_File_Rouge
             set { }
         }
 
+        public string this[int i]
+        {
+            get
+            {
+                return Maps[i];
+            }
+
+            set { }
+        }
+
         public Map ()
         {
             Maps = new List<string>();
@@ -37,28 +47,40 @@ namespace Projet_File_Rouge
         {
             string s ="";
 
-            for (int i = 0; i < Maps.Count; i++)
-            {
-                for (int j = 0; j < Maps[i].Length; j++)
-                {
-                    s += (Maps[i][j]);
-                }
-                s += '\n';
-            }
-            Console.Write(s + '\n');
-            DrawChar(perso);
-            
-        }
+            int xCenter = Console.WindowWidth / 2;
+            int yCenter = Console.WindowHeight / 2;
+            int xleft;
+            int ytop;
 
-        public void DrawChar(Personnage perso)
-        {
-            Console.SetCursorPosition(perso.PosX, perso.PosY);
+            lock (perso)
+            {
+                xleft = perso.PosX - xCenter;
+                ytop = perso.PosY - yCenter;
+            }
+
+            lock (Maps)
+            {
+                xCenter = xleft < 0 ? xCenter + xleft : xCenter;
+                yCenter = ytop < 0 ? yCenter + ytop : yCenter;
+                xleft = xleft + Console.WindowWidth > Maps[0].Length ? Maps[0].Length - Console.WindowWidth : xleft;
+                ytop = ytop + Console.WindowHeight > Maps.Count ? Maps.Count - Console.WindowHeight : ytop;
+            }
+
+            for (int i = ytop; i < ytop + Console.WindowHeight; i++)
+            {
+                for (int j = xleft; j < xleft + Console.WindowWidth; j++)
+                {
+                    s += this[j, i];
+                }
+            }
+            Console.Write(s);
+            Console.SetCursorPosition(xCenter, yCenter);
             Console.Write("@");
         }
 
         public void EraseChar(int x, int y)
         {
-            Console.SetCursorPosition(x, y);
+            Console.SetCursorPosition(Console.WindowWidth / 2, Console.WindowHeight / 2);
             Console.Write(' ');
         }
     }

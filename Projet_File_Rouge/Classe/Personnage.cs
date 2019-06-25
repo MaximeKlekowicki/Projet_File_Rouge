@@ -49,8 +49,8 @@ namespace Projet_File_Rouge
         {
             Nom = nom;
             _map = map;
-            PosX = 10;
-            PosY = 10;
+            PosX = 500;
+            PosY = 500;
 
             _equipement = new List<Item>();
         }
@@ -79,66 +79,31 @@ namespace Projet_File_Rouge
             return bonus;
         }
 
-         public void deplacementPersonnage(ConsoleKey key)
+         public void DeplacementPersonnage(ConsoleKey key)
          {
-            Map.DrawChar(this);             
-            Map.EraseChar(PosX, PosY);
+            //Map.DrawChar(this);             
+            //Map.EraseChar(PosX, PosY);
             switch (key) 
             {
                 case ConsoleKey.UpArrow:
-                    if (PosY > 0 && Map[PosX, PosY - 1] == ' ')
+                    if (PosY > 0 && Map[PosX, PosY - 1] == '.')
                         PosY--;
                     break;
                 case ConsoleKey.DownArrow:
-                    if (PosY < Console.WindowHeight - 1 && PosY < 19 && Map[PosX , PosY + 1] == ' ') 
+                    if (PosY < Map.Length && Map[PosX , PosY + 1] == '.')
                         PosY++;
                     break;
                 case ConsoleKey.LeftArrow: 
-                    if (PosX > 0 && Map[PosX - 1, PosY] == ' ')
+                    if (PosX > 0 && Map[PosX - 1, PosY] == '.')
                         PosX--;
                     break;
                 case ConsoleKey.RightArrow: 
-                    if (PosX < Console.WindowWidth - 1 && Map[PosX + 1, PosY] == ' ')
+                    if (PosX < Map[0].Length && Map[PosX + 1, PosY] == '.')
                         PosX++;
                     break;
             }
-            Map.DrawChar(this);
+            //Map.DrawChar(this);
+            Map.DessinerMap(this);
         }
-
-         public void DeplacementPersonnage()
-         {
-             Map.DrawChar(this);
-
-             ConsoleKey key = ConsoleKey.Enter; // Valeur initiale
-             do
-             {
-                 if (Console.KeyAvailable)
-                 {
-                     key = Console.ReadKey(true).Key;
-                    Map.EraseChar(PosX, PosY);
-                     switch (key) 
-                     {
-                         case ConsoleKey.UpArrow:
-                             if (PosY > 0 && Map[PosX, PosY - 1] == ' ')
-                                 PosY--;
-                             break;
-                         case ConsoleKey.DownArrow:
-                             if (PosY < Console.WindowHeight - 1 && PosY < 19 && Map[PosX , PosY + 1] == ' ') 
-                                 PosY++;
-                             break;
-                         case ConsoleKey.LeftArrow: 
-                             if (PosX > 0 && Map[PosX - 1, PosY] == ' ')
-                                 PosX--;
-                             break;
-                         case ConsoleKey.RightArrow: 
-                             if (PosX < Console.WindowWidth - 1 && Map[PosX + 1, PosY] == ' ')
-                                 PosX++;
-                             break;
-                     }
-
-                     Map.DrawChar(this); 
-                 }
-             } while (key != ConsoleKey.Escape); 
-         }   
     }
 }

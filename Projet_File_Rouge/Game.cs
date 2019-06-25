@@ -11,7 +11,8 @@ namespace Projet_File_Rouge
     {
         static void Main(string[] args)
         {
-            MenuPrincipal menuPrincipal = new MenuPrincipal();
+            Console.CursorVisible = false;
+            MenuPrincipal menuPrincipal = new MenuPrincipal();  
             Map map = new Map();
             Personnage perso = new Personnage("perso", map);
 
@@ -42,7 +43,7 @@ namespace Projet_File_Rouge
                             case ConsoleKey.DownArrow:
                             case ConsoleKey.LeftArrow:
                             case ConsoleKey.RightArrow:
-                                perso.deplacementPersonnage(key);
+                                perso.DeplacementPersonnage(key);
                                 break;
                             default:
                                 break;
