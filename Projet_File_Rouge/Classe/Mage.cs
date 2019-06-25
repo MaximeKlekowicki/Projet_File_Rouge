@@ -9,7 +9,7 @@ namespace Projet_File_Rouge.Classe
     class Mage: ClassePersonnage, IAttaque
     {
         #region Constructeur
-        public Mage(string nom, List<Item> equipement) : base(nom, equipement)
+        public Mage(string nom) : base(nom)
         {
             this.ATK += 80;
             this.DEF += 30;
@@ -22,8 +22,16 @@ namespace Projet_File_Rouge.Classe
         public ClassePersonnage Attaque(ClassePersonnage perso)
         {
             Console.WriteLine(_nom + " Lance une boule de feu");
-            perso.HP -= (ATK - perso.DEF);
-            Console.WriteLine("Il inflige " + ATK + " dégats à " + perso._nom);
+            double degats = ATK + GetBonus(STAT.ATK) - perso.DEF + perso.GetBonus(STAT.DEF);
+            try
+            {
+                perso.HP -= degats;
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("DEad");
+            }
+            Console.WriteLine("Il inflige " + degats + " dégats à " + perso._nom);
             return perso;
         }
 

@@ -17,8 +17,6 @@ namespace Projet_File_Rouge.Classe
     {
         public string _nom;
         public int _niveau;
-        private readonly int _bonus;
-        private readonly STAT _carac;
 
         #region Constructeur
         private double _atk;
@@ -71,7 +69,7 @@ namespace Projet_File_Rouge.Classe
         private List<Item> _equipement;
 
         public ClassePersonnage() { }
-        public ClassePersonnage(string nom, List<Item> equipement)
+        public ClassePersonnage(string nom)
         {
             _nom = nom;
             ATK = 10;
@@ -89,11 +87,14 @@ namespace Projet_File_Rouge.Classe
         public int GetBonus(STAT stat)
         {
             int bonus = 0;
-            if (_carac == stat)
+            foreach (Item item in _equipement)
             {
-                bonus = _bonus;
+                if (item.NomCarac == stat)
+                {
+                    bonus += item.Bonus;
+                }
             }
-            return 0;//(bonus + GetBonus(stat));
+            return bonus;
         }
 
         public void AjouterEquipement(Item item)

@@ -9,7 +9,7 @@ namespace Projet_File_Rouge.Classe
     class Orc: ClassePersonnage,IAttaque
     {
         #region Constructeur
-        public Orc(string nom, List<Item> equipement) : base(nom, equipement)
+        public Orc(string nom) : base(nom)
         {
             this.ATK += 60;
             this.DEF += 0;
@@ -22,8 +22,9 @@ namespace Projet_File_Rouge.Classe
         public ClassePersonnage Attaque(ClassePersonnage perso)
         {
             Console.WriteLine(_nom + "Donne un coup de massue");
-            perso.HP -= (ATK - perso.DEF);
-            Console.WriteLine("Il inflige " + ATK + " dégats à " + perso._nom);
+            double degats = ATK + GetBonus(STAT.ATK) - perso.DEF + perso.GetBonus(STAT.DEF);
+            perso.HP -= degats;
+            Console.WriteLine("Il inflige " + degats + " dégats à " + perso._nom);
             return perso;
         }
 

@@ -10,10 +10,6 @@ namespace Projet_File_Rouge.Factories
     {
 
         public EnnemiFactory() { }
-        //Initialisation des items des ennemie
-        List<Item> itemOrc = new List<Item>();
-        List<Item> itemGobelin = new List<Item>();
-        List<Item> itemGeant = new List<Item>();
 
         //Factory de creation des ennemies
         public ClassePersonnage CreationEnnemi(int id)
@@ -21,13 +17,13 @@ namespace Projet_File_Rouge.Factories
             switch(id)
             {
                 case 1:
-                    return new Gobelin("Gobelin", itemGobelin);
+                    return new Gobelin("Gobelin");
                 case 2:
-                    return new Orc("Orc", itemOrc);
+                    return new Orc("Orc");
                 case 3:
-                    return new Geant("Geant", itemGeant);
+                    return new Geant("Geant");
                 default:
-                    return new Geant("Geant", itemGeant);
+                    return new Geant("Geant");
                     
             }
         }

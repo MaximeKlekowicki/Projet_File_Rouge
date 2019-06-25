@@ -24,17 +24,13 @@ namespace Projet_File_Rouge
             //Iniatialisation de la map
             Map map = new Map();
 
-            //Initialisation des items des personnages
-            List<Item> itemJeanna = new List<Item>();
-            List<Item> itemGarrosh = new List<Item>();
-            List<Item> itemRexxar = new List<Item>();
-
             //Initialisation des personnage jouable
             Personnage perso = new Personnage("perso", map);
-            Mage jeanna = new Mage("Jeanna", itemJeanna);
-            Guerrier garrosh = new Guerrier("Garrosh", itemGarrosh);
-            Archer rexxar = new Archer("Rexxar", itemRexxar);
+            Mage jeanna = new Mage("Jeanna");
+            Guerrier garrosh = new Guerrier("Garrosh");
+            Archer rexxar = new Archer("Rexxar");
 
+            jeanna.AjouterEquipement(new Item("batopn", 10, STAT.ATK));
             //List des ennemies
             List<Orc> listOrc = new List<Orc>();
             List<Gobelin> listGobelin = new List<Gobelin>();
