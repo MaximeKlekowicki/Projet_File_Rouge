@@ -18,8 +18,6 @@ namespace Projet_File_Rouge.Classe
             this.VIT += 70;
             this.HP += 30;
         }
-
-
         #endregion
 
         #region Fonctions

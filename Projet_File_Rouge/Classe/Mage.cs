@@ -18,7 +18,7 @@ namespace Projet_File_Rouge.Classe
         }
         #endregion
 
-        #region Constructeur
+        #region Fonctions
         public ClassePersonnage Attaque(ClassePersonnage perso)
         {
             Console.WriteLine(_nom + " Lance une boule de feu");
@@ -35,7 +35,5 @@ namespace Projet_File_Rouge.Classe
             return perso;
         }
         #endregion
-
-
     }
 }

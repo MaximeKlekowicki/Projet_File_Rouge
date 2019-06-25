@@ -18,7 +18,7 @@ namespace Projet_File_Rouge.Classe
         }
         #endregion
 
-        #region Fonction
+        #region Fonctions
         public ClassePersonnage Attaque(ClassePersonnage perso)
         {
             Console.WriteLine(_nom + "Defonce un crane");

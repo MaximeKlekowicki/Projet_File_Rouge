@@ -78,7 +78,5 @@ namespace Projet_File_Rouge
         }
         #endregion
 
-
-
     }
 }
