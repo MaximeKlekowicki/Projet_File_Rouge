@@ -1,22 +1,16 @@
-﻿using Projet_File_Rouge.Items;
+﻿using Projet_File_Rouge.Classe;
+using Projet_File_Rouge.Items;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace Projet_File_Rouge
 {
-    public enum STAT
-    {
-        ATK,
-        DEF,
-        VIT,
-        PV
-    }
-
     public class Personnage
     {
+        #region Constructeur
         public string Nom;
-       
+
 
         private int _PosX;
 
@@ -54,56 +48,35 @@ namespace Projet_File_Rouge
 
             _equipement = new List<Item>();
         }
+        #endregion
 
-        public void AjouterEquipement(Item item)
+        #region Fonctions
+        public void DeplacementPersonnage(ConsoleKey key)
         {
-            _equipement.Add(item);
-        }
-
-        public void SupprimerEquipement(Item item)
-        {
-            _equipement.Remove(item);
-        }
-
-        public virtual int GetBonus(STAT nomCarac)
-        {
-            int bonus = 0;
-            foreach (Item item in _equipement)
-            {
-                if (item.NomCarac == nomCarac)
-                {
-                    bonus += item.Bonus;
-                }
-            }
-
-            return bonus;
-        }
-
-         public void deplacementPersonnage(ConsoleKey key)
-         {
-            Map.DrawChar(this);             
+            Map.DrawChar(this);
             Map.EraseChar(PosX, PosY);
-            switch (key) 
+            switch (key)
             {
                 case ConsoleKey.UpArrow:
-                    if (PosY > 0 && Map[PosX, PosY - 1] == ' ')
+                    if (PosY > 0 && Map[PosX, PosY - 1] == ' ' || Map[PosX, PosY - 1] == 'M')
                         PosY--;
                     break;
                 case ConsoleKey.DownArrow:
-                    if (PosY < Console.WindowHeight - 1 && PosY < 19 && Map[PosX , PosY + 1] == ' ') 
+                    if (PosY < Console.WindowHeight - 1 && PosY < 19 && Map[PosX, PosY + 1] == ' ' || Map[PosX, PosY + 1] == 'M')
                         PosY++;
                     break;
-                case ConsoleKey.LeftArrow: 
-                    if (PosX > 0 && Map[PosX - 1, PosY] == ' ')
+                case ConsoleKey.LeftArrow:
+                    if (PosX > 0 && Map[PosX - 1, PosY] == ' ' || Map[PosX - 1, PosY] == 'M')
                         PosX--;
                     break;
-                case ConsoleKey.RightArrow: 
-                    if (PosX < Console.WindowWidth - 1 && Map[PosX + 1, PosY] == ' ')
+                case ConsoleKey.RightArrow:
+                    if (PosX < Console.WindowWidth - 1 && Map[PosX + 1, PosY] == ' ' || Map[PosX + 1, PosY] == 'M')
                         PosX++;
                     break;
             }
             Map.DrawChar(this);
         }
+<<<<<<< HEAD
 
          public void DeplacementPersonnage()
          {
@@ -140,5 +113,9 @@ namespace Projet_File_Rouge
                  }
              } while (key != ConsoleKey.Escape); 
          }   
+=======
+        #endregion
+
+>>>>>>> combat
     }
 }

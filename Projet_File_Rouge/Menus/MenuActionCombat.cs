@@ -4,18 +4,17 @@ using System.Text;
 
 namespace Projet_File_Rouge.Menus
 {
-    public class MenuPrincipal
+    class MenuActionCombat
     {
-        private static int index = 0;
-        MyFile file = new MyFile("banner.txt");
-        public static List<string> banner_menu = new List<string>();
-
-
-        public MenuPrincipal(){ }
-
+        private static int index;
+        MyFile file = new MyFile("Combat.txt");
+        public static List<string> banner_combat = new List<string>();
+        public MenuActionCombat() { }
         public string DrawMenu(List<string> menuItems)
         {
             Console.CursorVisible = false;
+
+            DessinerBanner();
 
             for (int i = 0; i < menuItems.Count; i++)
             {
@@ -27,6 +26,7 @@ namespace Projet_File_Rouge.Menus
                     Console.ForegroundColor = ConsoleColor.Black;
 
                     Console.WriteLine(menuItems[i]);
+
                 }
                 else
                 {
@@ -53,56 +53,43 @@ namespace Projet_File_Rouge.Menus
                 }
                 else { index--; }
             }
-            else if (ckey.Key == ConsoleKey.Enter )
+            else if (ckey.Key == ConsoleKey.Enter)
             {
                 switch (menuItems[index])
                 {
-                    case "Nouvelle Partie":
+                    case "Attaque":
                         return menuItems[index];
 
-                    case "Charger Partie":
+                    case "Attaque Spécial":
                         return menuItems[index];
-
-                    case "Exit":
-                        Environment.Exit(0);
-                    break;
-
                     default:
                         break;
                 }
             }
-
             Console.Clear();
             return "";
         }
 
-        private static void CentrerLeTexte(string texte)
-        {
-	        int nbEspaces = (Console.WindowWidth - texte.Length) / 2;
-
-	        Console.SetCursorPosition(nbEspaces, nbEspaces);
-        }
-
         public void DessinerBanner()
         {
+            Console.SetCursorPosition(0, 0);
+
             string s = "";
 
             foreach (string ligne in file)
             {
-                banner_menu.Add(ligne);
+                banner_combat.Add(ligne);
             }
 
-            for (int i = 0; i < banner_menu.Count; i++)
+            for (int i = 0; i < banner_combat.Count; i++)
             {
-                for (int j = 0; j < banner_menu[i].Length; j++)
+                for (int j = 0; j < banner_combat[i].Length; j++)
                 {
-                    s += (banner_menu[i][j]);
+                    s += (banner_combat[i][j]);
                 }
                 s += '\n';
             }
-            Console.Write(s + '\n');
-
+            Console.Write(s);
         }
     }
-    
 }
