@@ -30,7 +30,7 @@ namespace Projet_File_Rouge
             Guerrier garrosh = new Guerrier("Garrosh");
             Archer rexxar = new Archer("Rexxar");
 
-            jeanna.AjouterEquipement(new Item("batopn", 10, STAT.ATK));
+            jeanna.AjouterEquipement(new Item("baton", 10, STAT.ATK));
             //List des ennemies
             List<Orc> listOrc = new List<Orc>();
             List<Gobelin> listGobelin = new List<Gobelin>();
