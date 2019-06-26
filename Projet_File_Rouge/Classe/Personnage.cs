@@ -81,8 +81,6 @@ namespace Projet_File_Rouge
 
          public void DeplacementPersonnage(ConsoleKey key)
          {
-            //Map.DrawChar(this);             
-            //Map.EraseChar(PosX, PosY);
             switch (key) 
             {
                 case ConsoleKey.UpArrow:
@@ -102,7 +100,6 @@ namespace Projet_File_Rouge
                         PosX++;
                     break;
             }
-            //Map.DrawChar(this);
             Map.DessinerMap(this);
         }
     }
