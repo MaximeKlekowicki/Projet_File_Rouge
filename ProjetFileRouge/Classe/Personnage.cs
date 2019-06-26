@@ -43,8 +43,8 @@ namespace Projet_File_Rouge
         {
             Nom = nom;
             _map = map;
-            PosX = 500;
-            PosY = 500;
+            PosX = 990;
+            PosY = 990;
 
             _equipement = new List<Item>();
         }
@@ -72,7 +72,6 @@ namespace Projet_File_Rouge
                         PosX++;
                     break;
             }
-            Map.DessinerMap(this);
         }
         #endregion
     }

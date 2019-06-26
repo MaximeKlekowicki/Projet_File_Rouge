@@ -53,7 +53,7 @@ namespace Projet_File_Rouge
                 }
                 txt += '\n';
             }
-            Console.Clear();
+            Console.SetCursorPosition(0, 0);
             Console.Write(txt);
         }
     }
