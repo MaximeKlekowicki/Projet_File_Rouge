@@ -11,7 +11,6 @@ namespace Projet_File_Rouge
     {
         static void Main(string[] args)
         {
-            Console.CursorVisible = false;
             MenuPrincipal menuPrincipal = new MenuPrincipal();  
             Map map = new Map();
             Personnage perso = new Personnage("perso", map);
@@ -34,7 +33,7 @@ namespace Projet_File_Rouge
                 {
                     do
                     {
-                        Console.Clear();
+                        Console.SetCursorPosition(0, 0);
                         map.DessinerMap(perso);
                         key = Console.ReadKey().Key;
                         switch (key)
