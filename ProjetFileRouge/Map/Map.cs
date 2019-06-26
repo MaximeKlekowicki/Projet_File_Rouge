@@ -8,7 +8,7 @@ namespace Projet_File_Rouge
 {
     public class Map
     {
-        #region Constructeur
+        #region Attributs
         MyFile File;
         public static List<string> Maps;
 
@@ -24,6 +24,18 @@ namespace Projet_File_Rouge
             set { }
         }
 
+        public string this[int i]
+        {
+            get
+            {
+                return Maps[i];
+            }
+
+            set { }
+        }
+        #endregion
+
+        #region Constructeur
         public Map()
         {
             Maps = new List<string>();
@@ -40,22 +52,37 @@ namespace Projet_File_Rouge
         {
             string s = "";
 
-            for (int i = 0; i < Maps.Count; i++)
+            int xCenter = Console.WindowWidth / 2;
+            int yCenter = Console.WindowHeight / 2;
+            int xleft;
+            int ytop;
+
+            lock (perso)
             {
-                for (int j = 0; j < Maps[i].Length; j++)
-                {
-                    s += (Maps[i][j]);
-                }
-                s += '\n';
+                xleft = perso.PosX - xCenter;
+                ytop = perso.PosY - yCenter;
             }
-            Console.Write(s + '\n');
-            DrawChar(perso);
 
-        }
+            lock (Maps)
+            {
+                xCenter = xleft < 0 ? xCenter + xleft : xCenter;
+                yCenter = ytop < 0 ? yCenter + ytop : yCenter;
+                xleft = xleft + Console.WindowWidth > Maps[0].Length ? Maps[0].Length - Console.WindowWidth : xleft;
+                xleft = xleft < 0 ? 0 : xleft;
+                ytop = ytop + Console.WindowHeight > Maps.Count ? Maps.Count - Console.WindowHeight : ytop;
+                ytop = ytop < 0 ? 0 : ytop;
+            }
 
-        public void DrawChar(Personnage perso)
-        {
-            Console.SetCursorPosition(perso.PosX, perso.PosY);
+            for (int i = ytop; i < ytop + Console.WindowHeight; i++)
+            {
+                for (int j = xleft; j < xleft + Console.WindowWidth; j++)
+                {
+                    s += this[j, i];
+                }
+            }
+
+            Console.Write(s);
+            Console.SetCursorPosition(xCenter, yCenter);
             Console.Write("@");
         }
 
@@ -65,6 +92,5 @@ namespace Projet_File_Rouge
             Console.Write(' ');
         }
         #endregion
-
     }
 }

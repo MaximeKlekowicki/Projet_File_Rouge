@@ -43,8 +43,8 @@ namespace Projet_File_Rouge
         {
             Nom = nom;
             _map = map;
-            PosX = 10;
-            PosY = 10;
+            PosX = 500;
+            PosY = 500;
 
             _equipement = new List<Item>();
         }
@@ -53,28 +53,26 @@ namespace Projet_File_Rouge
         #region Fonctions
         public void DeplacementPersonnage(ConsoleKey key)
         {
-            Map.DrawChar(this);
-            Map.EraseChar(PosX, PosY);
             switch (key)
             {
                 case ConsoleKey.UpArrow:
-                    if (PosY > 0 && Map[PosX, PosY - 1] == ' ' || Map[PosX, PosY - 1] == 'M')
+                    if (PosY > 0 && Map[PosX, PosY - 1] != '#')
                         PosY--;
                     break;
                 case ConsoleKey.DownArrow:
-                    if (PosY < Console.WindowHeight - 1 && PosY < 19 && Map[PosX, PosY + 1] == ' ' || Map[PosX, PosY + 1] == 'M')
+                    if (PosY < Map.Length && Map[PosX, PosY + 1] != '#')
                         PosY++;
                     break;
                 case ConsoleKey.LeftArrow:
-                    if (PosX > 0 && Map[PosX - 1, PosY] == ' ' || Map[PosX - 1, PosY] == 'M')
+                    if (PosX > 0 && Map[PosX - 1, PosY] != '#')
                         PosX--;
                     break;
                 case ConsoleKey.RightArrow:
-                    if (PosX < Console.WindowWidth - 1 && Map[PosX + 1, PosY] == ' ' || Map[PosX + 1, PosY] == 'M')
+                    if (PosX < Map[0].Length && Map[PosX + 1, PosY] != '#')
                         PosX++;
                     break;
             }
-            Map.DrawChar(this);
+            Map.DessinerMap(this);
         }
         #endregion
     }
