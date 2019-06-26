@@ -80,7 +80,7 @@ namespace Projet_File_Rouge
                     //Affichage de la map
                     do
                     {
-                        Console.Clear();
+                        Console.SetCursorPosition(0, 0);
                         map.DessinerMap(perso);
                         key = Console.ReadKey().Key;
                         //System de deplacement

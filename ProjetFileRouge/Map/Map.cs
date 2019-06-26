@@ -65,8 +65,14 @@ namespace Projet_File_Rouge
 
             lock (Maps)
             {
-                xCenter = xleft < 0 ? xCenter + xleft : xCenter;
+                //On vérifie la position du personnage par rapport aux bords de la carte
                 yCenter = ytop < 0 ? yCenter + ytop : yCenter;
+                yCenter = ytop + Console.WindowHeight > Maps.Count ? Console.WindowHeight - (Maps.Count - perso.PosY) : yCenter;
+
+                xCenter = xleft < 0 ? xCenter + xleft : xCenter;
+                xCenter = xleft + Console.WindowWidth > Maps[0].Length ? Console.WindowWidth - (Maps[0].Length - perso.PosX) : xCenter;
+
+                //On assigne les bornes de l'écran à afficher
                 xleft = xleft + Console.WindowWidth > Maps[0].Length ? Maps[0].Length - Console.WindowWidth : xleft;
                 xleft = xleft < 0 ? 0 : xleft;
                 ytop = ytop + Console.WindowHeight > Maps.Count ? Maps.Count - Console.WindowHeight : ytop;
@@ -77,6 +83,7 @@ namespace Projet_File_Rouge
             {
                 s += this[i].Substring(xleft, Console.WindowWidth);
             }
+
             Console.Write(s);
             Console.SetCursorPosition(xCenter, yCenter);
             Console.Write("@");
