@@ -62,7 +62,6 @@ namespace Projet_File_Rouge.Menus
                         break;
                 }
             }
-
             Console.Clear();
             return "";
         }

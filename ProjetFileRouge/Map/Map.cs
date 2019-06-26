@@ -75,12 +75,8 @@ namespace Projet_File_Rouge
 
             for (int i = ytop; i < ytop + Console.WindowHeight; i++)
             {
-                for (int j = xleft; j < xleft + Console.WindowWidth; j++)
-                {
-                    s += this[j, i];
-                }
+                s += this[i].Substring(xleft, Console.WindowWidth);
             }
-
             Console.Write(s);
             Console.SetCursorPosition(xCenter, yCenter);
             Console.Write("@");
