@@ -39,7 +39,7 @@ namespace Projet_File_Rouge
         public Map()
         {
             Maps = new List<string>();
-            File = new MyFile("map.txt");
+            File = new MyFile(Directory.GetParent(Environment.CurrentDirectory).Parent.FullName + "\\map.txt");
             foreach (string line in File)
             {
                 Maps.Add(line);
