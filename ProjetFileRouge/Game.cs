@@ -122,7 +122,6 @@ namespace Projet_File_Rouge
                             default:
                                 break;
                         }
-                        Thread.Sleep(10);
                     } while (key != ConsoleKey.Escape);
                 }
             }
